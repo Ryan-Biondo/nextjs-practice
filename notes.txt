@@ -1,0 +1,47 @@
+npx create-next-app 
+- default selections are fine
+cd project-name
+npm run dev
+
+
+- we dont need react router, we can simply make files and folders to represent our routes
+ lower case names  page.tsx by next convention - routing system is based on convention, not configuration
+
+rafce - react arrow function component w/ an export "Rafce"
+- can rename page.tsx to whatever and use PascalCase again 
+
+ctrl + p - lookup files by their name, type page and see all pages for navigation
+
+use Link component to keep from repulling static data from the server
+<Link href="/users">Users</Link>
+avoids redownloading font, css, js files
+- called Client-side navigation
+
+Rendering Environments
+client-side rendering (CSR) - web browser
+- large bundles - more resource intensive 
+- No SEO bc seo bots cant read js - less secure
+server-side rendering (SSR) - Node.js Runtime
+- smaller bundles - efficient
+- SEO with actual content - hide sensitive data
+Server components lose interactivity
+- events, api access, maintain state, use effect
+- only use client components when you NEED them
+Extract client data as components that handle interactivity, leave all else on the server
+
+ALL APPS INSIDE THE APP FOLDER ARE SERVER COMPONENTS BY DEFAULT
+- render on the server
+- the localhost returns the html that is recieved from the backend - let's SEO read
+PAGES ROUTER DOESN'T SUPPORT SERVER COMPONENTENTS? (old)
+USE THE NEW APP ROUTER
+
+Can just use 'use client'; at the top to convert to a client component
+- only do this when absolutley necessary
+- extract ONLY what is needed for the client and add to separate component (in the same folder)
+
+*Can add components to a components folder and pull from them for the pages
+
+Fetching on the client - slow
+- useState() + useEffect()
+- React Query
+Just fetch our data in our server component and we dont have to worry about client side issues
