@@ -45,3 +45,14 @@ Fetching on the client - slow
 - useState() + useEffect()
 - React Query
 Just fetch our data in our server component and we dont have to worry about client side issues
+
+Caching - storing data somewhere faster to access
+1 memory fast
+2 file system slow
+3 network slower
+Can use cache: 'no-store' to keep from chaching
+or next: { revalidate: 10 } - rechecks for new data evey 10s
+
+With server side rendering, we have static and dynamic
+Static Rendering (Static site generation) - render at build time once
+Dynamic rendering - at request time
