@@ -1,0 +1,40 @@
+Tailwind CSS - CSS framework, utility classes
+it stays where it is, if you delete it, you dont have to worry about cleaning up elsewhere
+USE CTRL + SPACE TO ACCESS EXTENTIONS
+className="p-5 my-5 bg-sky-400 text-white text-xl hover:bg-sky-600"
+Paddings, margins
+p-[number]
+px-[number]
+py-[number]
+pt-[number] (top)
+pr-[number]
+pb-[number]
+pl-[number]
+
+Text
+size
+text-xs
+text-sm
+text-base
+text-lg
+text-xl
+text-2xl
+text-3xl
+
+color - google tailwind color palette (50-950)
+text-[color]
+bg-[color]
+
+thickness
+font-thin
+font-light
+font-normal
+font-medium
+font-semibold
+font-bold
+
+Daisy UI
+npm i -D daisyui@latest
+then add Daisy as one of the plugins of tailwind in tailwind.config.js
+plugins: [require("daisyui")]
+use themes
