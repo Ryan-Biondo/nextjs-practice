@@ -1,0 +1,25 @@
+SPECIAL FILES FOR NEXTJS ROUTING
+page.tsx
+layout.tsx
+loading.tsx
+route.tsx
+not-found.tsx
+error.tsx
+
+Only the page file is publicly accessible
+other files are not exposed to the client
+use the app directory to co-locate our page files and other building blocks of out project
+
+Dynamic Routes - a route with a PARAMETER
+create a folder with [param] with a page.tsx
+in order to access route parameters, pass props
+- this only works on page.tsx. if its another component, it needs to be passed from the page
+
+Catch-all segments 
+- if we have a varying number of parameters, we dont need to create a bunch of nested folders
+- instead prefix the folder name w/ ... [...name]
+- to make the parameter optional (routing to the base) wrap in double square brackets [[...slug]]
+- params
+
+Query String Parameters - a way to pass information to the server as part of a URL
+- use searchParams
