@@ -23,3 +23,31 @@ Catch-all segments
 
 Query String Parameters - a way to pass information to the server as part of a URL
 - use searchParams
+- a way to pass state on the server
+- <Link href="/users?sortOrder=name">Name</Link>
+
+Fast Sort - library for sorting data
+npm i fast-sort
+
+Layout - layout.tsx
+- a layout component should have children of type ReactNode.
+- TS will need an interface
+
+Link component - only dls the content of the target page
+- pre fetches links that are in the viewport
+- caches pages on the client
+
+*Dont use useRouter from next/router - import it from next/navigation
+
+Suspense - show a fallback ui while a component is being rendered, while we wait for it to fetch the data
+- wrap the component in a <Suspense fallback={<div>Loading...</div>}>
+- streaming - doesnt interrupt seo, uploads to client, and uploads more when the data has rendered
+- same as streaming video/auio, we can stream HTML content
+
+not-found - use a not found page to customize the message for a bad url
+
+unexpected errors - create a custom error page
+
+look into Sentry for login services https://sentry.io/
+ - can send error objects to sentry for persistance
+ 
