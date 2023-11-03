@@ -1,0 +1,20 @@
+create a folder called api - not required, but common convention
+- under api we can create our various endpoints ex users, posts, etc
+- in any folder or url segment, we can have a page or route file but not BOTH
+page file - return markup and HTML
+route file - handle HTTP requests
+
+Do a get request, then a post request
+
+create another folder for route with an array to target parameters of a group
+- pass props to the route
+
+Export a function for updating it - put vs patch
+use put for REPLACING an OBJECT
+use patch for UPDATING one or more PROPERTIES
+
+delete - delete an object
+
+Validating requests - can use if statements
+but for more complex objects - use a validation library like zod!
+ - create a file called schema, export the validation
