@@ -1,0 +1,46 @@
+Prisma
+Defining data models
+Creating migrations
+Performing CRUD operations
+
+MySQL Community Database
+*note to self - in order to make MySQL server run we had to access 
+*services>MySQL80>properties>Log on and set Local System account and allow service to interact with desktop
+MySQL workbench or DataGrip (better but paid service)
+
+
+prisma - a popular ORM (object relational mapper) 
+- got extension and npm i prisma
+- use npx to use command line interface CLI
+npx prisma - for commands
+npx prisma init
+Prisma connection URL examples for different db's online
+- update the schema and .env for your db
+postgres - postgres
+mysql - root
+
+Defining Data Models (or application models) - entities of the application domain
+- entities ex. product customer cart order ect
+- define models in the prisma schema
+npx prisma format to format code
+- search for prisma data models for examples
+* look into model relationships and build complex models
+
+Migrations
+npx prisma migrate dev (npx prisma db push for nosql and mongo)
+Prisma CLI creates a migration and applies it to our Database
+ - version controlled, and prisma translates to sql
+ - can find in mysql workbench under schemas tab in tables
+ whenever you make a change to the schema, run npx prisma migrate dev to keep up with vc and update the db
+ name each migration with meaningful names
+
+ Create a Prisma Client - access to the models defined in the schema
+ anytime we define or change a model and create a migrattion
+ - prisma CLI auto generates or regenerates the prisma client, and stays in sync with models
+ can create prisma client anywhere in the application
+ - but best practice, only have ONE in the app bc the results are cached and reused
+ - on refeshes can call an error in dev mode
+https://www.prisma.io/docs/guides/other/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices
+- target data through the prisma client and render
+
+Creating Data
