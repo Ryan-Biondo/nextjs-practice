@@ -33,6 +33,7 @@ Prisma CLI creates a migration and applies it to our Database
  - can find in mysql workbench under schemas tab in tables
  whenever you make a change to the schema, run npx prisma migrate dev to keep up with vc and update the db
  name each migration with meaningful names
+ int integers, float decimals,
 
  Create a Prisma Client - access to the models defined in the schema
  anytime we define or change a model and create a migrattion
@@ -43,4 +44,12 @@ Prisma CLI creates a migration and applies it to our Database
 https://www.prisma.io/docs/guides/other/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices
 - target data through the prisma client and render
 
-Creating Data
+Creating Data in the db through the route
+dont pass the body because we dont want the user to have access to anything they shouldnt have
+- pass specific properties of the body
+when errors occur bc of duplicate data or something, validate it in the route
+
+Update the data - just like creating data but with put instead of post
+Deleting data - 
+with everything you should validate, does it exist?
+
