@@ -53,3 +53,17 @@ Update the data - just like creating data but with put instead of post
 Deleting data - 
 with everything you should validate, does it exist?
 
+Allow users to upload files
+To store we need a cloud platform like amazon s3
+google cloud
+microsoft azure
+cloudinary - simplest solution
+ - by default have production environment, can create testing environment, development
+ - each has a separate storage
+ npm i next-cloudinary,
+ add NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME with environment name to .env file
+ Uploading Files using upload component https://next.cloudinary.dev/clduploadwidget/basic-usage
+ create a folder in app called upload
+ can customize upload options, by default allows all kinds of uploads and multiple files at once
+ https://demo.cloudinary.com/uw/#/ - use properties from js code
+ - upload event triggers when we upload - set an onUpload function
