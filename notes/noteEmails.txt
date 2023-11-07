@@ -1,0 +1,21 @@
+React Email react.email library
+Provides components for creating HTML emails
+Tool for previewing the emails
+Function for sending emails
+npm i react-email @react-email/components
+  "scripts": {
+    ...
+    "preview-email": "email dev -p 3030"
+  },
+create emails folder in root
+
+before running npm run preview-email, add .react-email/ to .gitignore
+
+sending emails
+react email integrates with other services like Resend (same team as react email)
+https://react.email/docs/integrations/resend
+set up the resend api key in the.env RESEND_API_KEY=
+npm i resend
+you shouldnt really have an endpoint for sending emails
+- its more likely part of your business operations, like sending confirmation emails
+All email operations should be executed on the server.
