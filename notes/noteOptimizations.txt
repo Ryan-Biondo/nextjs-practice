@@ -1,0 +1,46 @@
+Optimizing Images
+Using 3rd party JS libraries
+Using custom fonts
+SEO
+Lazy loading
+
+Optimize images using image component in Next JS - next/image package
+- built on top of standard html img element
+- automatically compresses and resizes based on device size
+- always use this over a standard html component
+- requires src and alt, can import an image an use as an object for src
+- often we have to get src from cloud for a user for ex
+     -next.config.js can add domains where we are allowed to serve images.
+     -for security be specific as possible
+     -remote images always require dimensions bc we dont know them ahead of time
+        -if not a fixed size, use fill
+        -if we use fill, parent element needs a position of relative absolute or fixed
+
+            to keep aspect ratio can use style={{ objectFit: 'cover' }} or contain
+        or Tailwind is cleaner - className="object-cover" (or object-contain)
+     -can set queries in sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+        - only for optimization doesnt impact the size of the image on the screen only how it's serving it on each device.
+     -Quality (1-100)
+     - Priority - for images that should appear above
+images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+        port: '',
+        pathname: '/account123/**',
+      },
+    ],
+  },
+https://nextjs.org/docs/pages/api-reference/components/image
+
+
+3rd party scripts
+To use a service you usualy have to add their script
+the next Script component can take a string an interpret it as js
+strategy='beforeInteractive' - script loads before nextjs inject any client side code "hydration"
+    - only critical and early scripts like bot managers and cookie consent managers
+afterInteractive - after the client starts to load (default)
+    - tag managers, analytics
+lazyOnLoad - after all resources on page have been fetched
+    - chat plugins, social media
