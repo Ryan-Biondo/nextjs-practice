@@ -1,0 +1,87 @@
+setup next auth https://next-auth.js.org/
+configure google provider - sign in w/ google!
+authentication session - access on client/server
+protecting routes - only accessed by authed users
+database adapters - use to store user data in the db
+configure credentials provider - allow users to use email and pw
+
+Next auth is becoming https://authjs.dev/ heads up
+https://next-auth.js.org/getting-started/example
+npm i next-auth
+https://next-auth.js.org/configuration/initialization#route-handlers-app
+use a catchall folder to handle any route that we start withthe prefixes 
+(app/api/auth)
+/app/api/auth/[...nextauth]/route.ts
+setup route and update env file with NEXTAUTH_URL=url of website - dev (http://localhost:3000)
+setup NEXTAUTH_SECRET="secret" use random # or use openssl rand -base64 32
+- figureout how to install openssl https://www.openssl.org/
+Providers - services that we can use to sign in a user
+https://next-auth.js.org/providers/google
+internal OAuth consent - only internal users
+external - public users - Your app will start in testing mode and will only be available to users you add to the list of test users. 
+    - Once your app is ready to push to production, you may need to verify your app.
+    - provide link to app in App domain settings once live
+    OAuth stands for open authentication - standard auth protocol that major sites use
+    - our app would be a client of google oauth protocol
+    Create OAuth client ID
+    Authorized redirect URIs - url that google uses to send the user back to the app (in google auth doc)
+    Create the provider in the route
+
+Understanding Authentication sessions
+When a user logs in Next Auth creates an authentication session for the user
+- by default it's represented as a JSON web token
+- cookies are small pieces of info that are exchanged between client and server with each request
+- any time our app sends a request to the server it sends cookies
+- the randome looking value of the cookie is actually a json web token
+    - like an id that the client uses to id itself
+    - has info that we send to google and unique id #s
+    - behind the token in a JSON object encoded using the base 64 algorithm - decoded by nextauth
+
+Access session on the client
+ - wrap our app in a session provider component in the base layout
+ - BUT we can't turn out layout into a client component, so create an AuthProvider component to hold it
+const AuthProvider = ({ children }: { children: ReactNode }) => return <SessionProvider>{children}</SessionProvider>;
+call useSession() in the navigation and grab status and data
+- 'use client' and check if session is available
+
+Access session on server
+the next auth options need to be exported to be reused
+then you can pass it to getServerSession() in the home page
+
+Signout
+create a link to /api/auth/signout
+- gets rid of the auth session
+
+Protecting routes with middleware
+- run code before a rquest is completed
+- when user tries to access unauthorized area, gets redirected
+use a middleware file - next recognizes
+- usually you dont want to run on every requst, only on certain paths
+    - next checks for a config function that specifies paths
+    - * 0 or more parameters
+    - + 1 or more
+    - ? 0 or 1
+- Next auto checks if there is a session, dont need to run a middleware check
+    - just export {default} from "next-auth/middleware";
+
+
+Database Adapters
+npm install @next-auth/prisma-adapter
+(will become npm install @auth/prisma-adapter)
+add prisma adapter to nextauth route
+ - add models to the prisma schema
+ - jwt - json web token, or can store sessions in the db
+ - nextauth uses db - cannot use with social logins/ or OAuth providers
+ - this will link the user data into the db
+
+Configure Credentials provider
+- store encrypted passwords
+- functionality to register to change password/reset
+- w/ social logins and OAuth providers we dont have to worry about that
+import CredentialsProvider
+use bcrypt to check encrypted passwords
+npm i bcrypt and npm i -D @types/bcrypt
+
+register usersregister folder, route file
+use zod to validate email and pw
+encrypt pw w/ bcrypt - dont return the hashedPW or you show it
