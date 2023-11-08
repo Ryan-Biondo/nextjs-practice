@@ -1,2 +1,22 @@
 Deployment
 build to check for errors
+
+push to github after creating a repo
+
+delpoy to 
+vercel (built nextjs - reccomended for next)
+aws
+google cloud platform
+heroku
+
+Vercel can hold our .env files
+- we will have to move our database to live off our machine
+we need a production db that is sitting on the cloud 
+    - mysql hosting
+    digital ocean
+    google cload platformms azure
+    hostinger
+    godaddy
+    get the db url and store it as an env var
+update our cloud from dev to prod
+DO NOT use the same keys for production, because people could try to acces your computer
