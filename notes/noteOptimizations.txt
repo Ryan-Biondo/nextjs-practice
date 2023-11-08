@@ -44,3 +44,53 @@ afterInteractive - after the client starts to load (default)
     - tag managers, analytics
 lazyOnLoad - after all resources on page have been fetched
     - chat plugins, social media
+
+
+Using fonts
+next/font/google hold tons of fonts, just call them as objects
+use a subset to specify the characters, or specify weight
+- variable fonts like openSans dont need weight
+even though they are google fonts, we serve them from our own domain
+- next.js auto builds the fonts we need in the build bundle
+can also use custom fonts
+import localFont from 'next/font/local';
+Next js provides a fallback font
+Can set a variable in our custom font, target it with Tailwind
+extend talwind config
+fontFamily: {
+      poppins: 'var(--font-poppins)',
+      },
+-then you can apply individually or to css
+
+SEO
+when we export a metadata object from a layout or page, 
+- next js auto includes that in the head of our HTML
+Search engines use meta data tags to index our content
+To make our website search engine friendly, make sure every page has proper meta tags
+openGraph - used when we share our pages on social media
+there are other categories like images, category, etc
+can set common properties on the main page, and go to individual pages to overwrite the values
+can render the metadata dynamically
+
+Lazy Loading - strategy for loading client component or third party libraries in the future when we need them
+- typically result of a user interaction like a button or scroll
+avoids loading a large block of code until necessary
+- when we import something, its auto included in the bundle so to delay it use dynamic to import it
+import dynamic from 'next/dynamic';
+const HeavyComponent = dynamic(() => import('./components/HeavyComponent'), {
+  ssr: false,
+  loading: () => <div>loading...</div>,
+});
+can look at the size of our responses to evaluate if better or worse
+can pass a 2nd arg to the function for options
+like loading or ssr
+when importing client components, by default, they are pre-rendered on the server
+use ssr: false to disable prerendering to avoid api errors
+Can lazy load external js libraries like lodash
+
+npm i lodash
+npm i -D @types/lodash
+
+so instead of importing at the top we can import as part of an event handler
+ onClick={async () => {
+    const _ = (await import('lodash')).default;
