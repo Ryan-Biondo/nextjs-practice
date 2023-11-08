@@ -1,8 +1,6 @@
 'use client';
 import Image from 'next/image';
 import napoleon from '@/public/images/napoleon.gif';
-import { Metadata } from 'next';
-import { useState } from 'react';
 
 export default function Home() {
   return (
@@ -29,11 +27,11 @@ export default function Home() {
   );
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const product = await fetch('https://fakestoreapi.com/products/1');
+// export async function generateMetadata(): Promise<Metadata> {
+//   const product = await fetch('');
 
-  return {
-    title: 'product.title',
-    description: 'product.description',
-  };
-}
+//   return {
+//     title: 'product.title',
+//     description: 'product.description',
+//   };
+// }
